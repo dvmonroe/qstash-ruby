@@ -1,7 +1,7 @@
 # QStash
 
-[![ci](https://github.com/dvmonroe/qstash-rb/actions/workflows/ci.yml/badge.svg)](https://github.com/dvmonroe/qstash-rb/actions/workflows/ci.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/56ffdaabb1df70536c88/maintainability)](https://codeclimate.com/github/dvmonroe/qstash-rb/maintainability)
+[![ci](https://github.com/dvmonroe/qstash-ruby/actions/workflows/ci.yml/badge.svg)](https://github.com/dvmonroe/qstash-ruby/actions/workflows/ci.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f3219443a8f5fbecca77/maintainability)](https://codeclimate.com/github/dvmonroe/qstash-ruby/maintainability)
 
 A Ruby client for the [QStash](https://upstash.com/qstash) service from Upstash.
 
@@ -287,7 +287,7 @@ bin/dev-lint
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/dvmonroe/qstash-rb.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dvmonroe/qstash-ruby.
 
 ## License
 

@@ -8,10 +8,10 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - ./bin:/var/www/qstash-rb/bin/
-      - ./lib:/var/www/qstash-rb/lib/
-      - ./test:/var/www/qstash-rb/test/
-    container_name: qstah-rb-3.3
+      - ./bin:/var/www/qstash-ruby/bin/
+      - ./lib:/var/www/qstash-ruby/lib/
+      - ./test:/var/www/qstash-ruby/test/
+    container_name: qstash-ruby-3.3
     command: bash
 
 volumes:
