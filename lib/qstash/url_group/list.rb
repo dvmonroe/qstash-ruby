@@ -1,24 +1,23 @@
 # frozen_string_literal: true
 
-# https://upstash.com/docs/qstash/api/events/list
+# https://upstash.com/docs/qstash/api/url-groups/list
 module QStash
-  module Events
+  module URLGroup
     class List
       include QStash::Callable
       include QStash::Requestable
       requestable method: :get
 
-      attr_reader :filters, :headers
+      attr_reader :headers
 
-      def initialize(filters: {}, headers: {})
-        @filters = filters
+      def initialize(headers: {})
         @headers = headers
       end
 
       private
 
       def path_segment
-        Endpoints::LIST_EVENTS_ENDPOINT
+        Endpoints::URL_GROUPS_ENDPOINT
       end
 
       def body

@@ -2,22 +2,27 @@
 
 module QStash
   module Endpoints
+    VERSION = "v2"
+
     # Messages
-    ENQUEUE_ENDPOINT = "v2/enqueue"
-    PUBLISH_ENDPOINT = "v2/publish"
-    BATCH_ENDPOINT = "v2/batch"
-    GET_ENDPOINT = "v2/messages"
-    CANCEL_ENDPOINT = "v2/messages"
-    BULK_CANCEL_ENDPOINT = "v2/messages"
+    ENQUEUE_ENDPOINT = "#{VERSION}/enqueue"
+    PUBLISH_ENDPOINT = "#{VERSION}/publish"
+    BATCH_ENDPOINT = "#{VERSION}/batch"
+    GET_ENDPOINT = "#{VERSION}/messages"
+    CANCEL_ENDPOINT = "#{VERSION}/messages"
+    BULK_CANCEL_ENDPOINT = "#{VERSION}/messages"
 
     # Events
-    LIST_EVENTS_ENDPOINT = "v2/events"
+    LIST_EVENTS_ENDPOINT = "#{VERSION}/events"
 
     # Signing Keys
-    ROTATE_SIGNING_KEY_ENDPOINT = "v2/keys/rotate"
-    SIGNING_KEYS_ENDPOINT = "v2/keys"
+    ROTATE_SIGNING_KEY_ENDPOINT = "#{VERSION}/keys/rotate"
+    SIGNING_KEYS_ENDPOINT = "#{VERSION}/keys"
 
     # Dead Letter Queue
-    DLQ_ENDPOINT = "v2/dlq"
+    DLQ_ENDPOINT = "#{VERSION}/dlq"
+
+    # URL Groups
+    URL_GROUPS_ENDPOINT = "#{VERSION}/topics"
   end
 end

@@ -4,26 +4,25 @@
 module QStash
   module SigningKeys
     class Rotate
+      include QStash::Requestable
       include QStash::Callable
+
+      requestable method: :post
+
       attr_reader :headers
 
       def initialize(headers: {})
         @headers = headers
       end
 
-      def call
-        uri = URI(endpoint)
-        client = QStash::HttpClient.new(uri)
-        client.post({}, headers)
-      end
-
       private
 
-      def endpoint
-        [
-          QStash.config.url.sub(/\/$/, ""),
-          Endpoints::ROTATE_SIGNING_KEY_ENDPOINT
-        ].join("/")
+      def path_segment
+        Endpoints::ROTATE_SIGNING_KEY_ENDPOINT
+      end
+
+      def body
+        {}
       end
     end
   end

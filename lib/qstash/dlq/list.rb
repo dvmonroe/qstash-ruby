@@ -5,6 +5,10 @@ module QStash
   module DLQ
     class List
       include QStash::Callable
+      include QStash::Requestable
+
+      requestable method: :get
+
       attr_reader :filters, :headers
 
       def initialize(filters: {}, headers: {})
@@ -12,24 +16,14 @@ module QStash
         @headers = headers
       end
 
-      def call
-        uri = URI(endpoint)
-        client = QStash::HttpClient.new(uri)
-        client.get(headers)
-      end
-
       private
 
-      def endpoint
-        url = [
-          QStash.config.url.sub(/\/$/, ""),
-          Endpoints::DLQ_ENDPOINT
-        ].join("/")
+      def path_segment
+        Endpoints::DLQ_ENDPOINT
+      end
 
-        # Add query params from filters hash
-        url += "?#{URI.encode_www_form(filters)}" unless filters.empty?
-
-        url
+      def body
+        nil
       end
     end
   end

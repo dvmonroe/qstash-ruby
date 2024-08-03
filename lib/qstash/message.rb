@@ -9,8 +9,8 @@ require "qstash/message/cancel"
 module QStash
   module Message
     class << self
-      def batch(messages:, headers: {})
-        Batch.call(messages: messages, headers: headers)
+      def batch(messages, headers: {})
+        Batch.call(messages, headers: headers)
       end
 
       def cancel(message_ids, headers: {})

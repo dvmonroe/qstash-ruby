@@ -5,6 +5,9 @@ module QStash
   module Message
     class Publish
       include QStash::Callable
+      include QStash::Requestable
+      requestable method: :post
+
       attr_reader :destination, :body, :headers
 
       def initialize(destination:, body:, headers: {})
@@ -13,20 +16,10 @@ module QStash
         @headers = headers
       end
 
-      def call
-        uri = URI(endpoint)
-        client = QStash::HttpClient.new(uri)
-        client.post(body, headers)
-      end
-
       private
 
-      def endpoint
-        [
-          QStash.config.url.sub(/\/$/, ""),
-          Endpoints::PUBLISH_ENDPOINT,
-          destination
-        ].join("/")
+      def path_segment
+        [Endpoints::PUBLISH_ENDPOINT, destination].join("/")
       end
     end
   end

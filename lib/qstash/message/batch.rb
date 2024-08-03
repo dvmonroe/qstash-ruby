@@ -5,26 +5,24 @@ module QStash
   module Message
     class Batch
       include QStash::Callable
+      include QStash::Requestable
+      requestable method: :post
+
       attr_reader :messages, :headers
 
-      def initialize(messages:, headers: {})
+      def initialize(messages, headers: {})
         @messages = messages
         @headers = headers
       end
 
-      def call
-        uri = URI(endpoint)
-        client = QStash::HttpClient.new(uri)
-        client.post(messages, headers)
-      end
-
       private
 
-      def endpoint
-        [
-          QStash.config.url.sub(/\/$/, ""),
-          Endpoints::BATCH_ENDPOINT
-        ].join("/")
+      def path_segment
+        Endpoints::BATCH_ENDPOINT
+      end
+
+      def body
+        messages
       end
     end
   end

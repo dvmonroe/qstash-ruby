@@ -5,25 +5,20 @@ module QStash
   module SigningKeys
     class Get
       include QStash::Callable
+      include QStash::Requestable
+
+      requestable method: :get
+
       attr_reader :headers
 
       def initialize(headers: {})
         @headers = headers
       end
 
-      def call
-        uri = URI(endpoint)
-        client = QStash::HttpClient.new(uri)
-        client.get(headers)
-      end
-
       private
 
-      def endpoint
-        [
-          QStash.config.url.sub(/\/$/, ""),
-          Endpoints::SIGNING_KEYS_ENDPOINT
-        ].join("/")
+      def path_segment
+        Endpoints::SIGNING_KEYS_ENDPOINT
       end
     end
   end

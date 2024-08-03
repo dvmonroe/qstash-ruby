@@ -6,6 +6,10 @@ module QStash
   module Message
     class Cancel
       include QStash::Callable
+      include QStash::Requestable
+
+      requestable method: :delete
+
       attr_reader :message_ids, :headers
 
       def initialize(message_ids, headers: {})
@@ -13,27 +17,14 @@ module QStash
         @headers = headers
       end
 
-      def call
-        uri = URI(endpoint)
-        client = QStash::HttpClient.new(uri)
-        client.delete(body, headers)
-      end
-
       private
 
-      def base_url
-        QStash.config.url.sub(/\/$/, "")
+      def path_segment
+        (message_ids.length > 1) ? Endpoints::BULK_CANCEL_ENDPOINT : [Endpoints::CANCEL_ENDPOINT, message_ids.first].join("/")
       end
 
       def body
         (message_ids.length > 1) ? {messageIds: message_ids} : {}
-      end
-
-      def endpoint
-        [
-          base_url,
-          (message_ids.length > 1) ? Endpoints::BULK_CANCEL_ENDPOINT : "#{Endpoints::CANCEL_ENDPOINT}/#{message_ids.first}"
-        ].join("/")
       end
     end
   end

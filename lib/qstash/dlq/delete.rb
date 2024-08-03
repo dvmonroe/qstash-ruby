@@ -5,6 +5,9 @@ module QStash
   module DLQ
     class Delete
       include QStash::Callable
+      include QStash::Requestable
+      requestable method: :delete
+
       attr_reader :dlq_ids, :headers
 
       def initialize(dlq_ids, headers: {})
@@ -12,27 +15,14 @@ module QStash
         @headers = headers
       end
 
-      def call
-        uri = URI(endpoint)
-        client = QStash::HttpClient.new(uri)
-        client.delete(body, headers)
-      end
-
       private
 
-      def base_url
-        QStash.config.url.sub(/\/$/, "")
+      def path_segment
+        (dlq_ids.length > 1) ? Endpoints::DLQ_ENDPOINT : [Endpoints::DLQ_ENDPOINT, dlq_ids.first].join("/")
       end
 
       def body
         (dlq_ids.length > 1) ? {dlqIds: dlq_ids} : {}
-      end
-
-      def endpoint
-        [
-          base_url,
-          (dlq_ids.length > 1) ? Endpoints::DLQ_ENDPOINT : "#{Endpoints::DLQ_ENDPOINT}/#{dlq_ids.first}"
-        ].join("/")
       end
     end
   end

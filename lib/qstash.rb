@@ -9,13 +9,16 @@ require "qstash/configuration"
 require "qstash/headers"
 require "qstash/http_client"
 require "qstash/response"
-require "qstash/callable"
 require "qstash/endpoints"
 
-require "qstash/message"
-require "qstash/events"
-require "qstash/signing_keys"
+require "qstash/callable"
+require "qstash/requestable"
+
 require "qstash/dlq"
+require "qstash/events"
+require "qstash/message"
+require "qstash/signing_keys"
+require "qstash/url_group"
 
 module QStash
   class Error < StandardError; end

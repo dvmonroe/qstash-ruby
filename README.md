@@ -20,6 +20,9 @@ If you're coming from a Rails background, you'll be familiar with ActiveJob, Sid
   - [Getting Started](#getting-started)
   - [Messages](#messages)
   - [Events](#events)
+  - [Signing Keys](#signing-keys)
+  - [Dead Letter Queue](#dead-letter-queue)
+  - [URL Groups](#url-groups)
   - [Development](#development)
   - [Contributing](#contributing)
   - [License](#license)
@@ -219,6 +222,50 @@ To [delete multiple dead letter messages](https://upstash.com/docs/qstash/api/dl
 
 ```ruby
 QStash::DLQ.delete(["1234", "5678"])
+```
+
+## URL Groups
+
+#### List
+
+To [list all url groups](https://upstash.com/docs/qstash/api/url-groups/list):
+
+```ruby
+QStash::URLGroup.list
+```
+
+#### Add Endpoints
+
+To [add endpoints to a url group](https://upstash.com/docs/qstash/api/url-groups/add-endpoint):
+
+```ruby
+QStash::URLGroup.add_endpoints(url_group_name: "my-url-group", endpoints: [{url: "https://example.com/api/message-receiver"}])
+```
+
+**Note that this will create the url group if it doesn't already exist.**
+
+#### Delete Endpoints
+
+To [delete endpoints from a url group](https://upstash.com/docs/qstash/api/url-groups/remove-endpoint):
+
+```ruby
+QStash::URLGroup.delete_endpoints(url_group_name: "my-url-group", endpoints: [{url: "https://example.com/api/message-receiver"}])
+```
+
+#### Delete
+
+To [delete a url group](https://upstash.com/docs/qstash/api/url-groups/remove):
+
+```ruby
+QStash::URLGroup.delete("my-url-group")
+```
+
+#### Get
+
+To [get a url group](https://upstash.com/docs/qstash/api/url-groups/get):
+
+```ruby
+QStash::URLGroup.get("my-url-group")
 ```
 
 ## Development
