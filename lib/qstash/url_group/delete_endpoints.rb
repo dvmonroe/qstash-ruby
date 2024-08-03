@@ -23,7 +23,7 @@ module QStash
       end
 
       def body
-        { endpoints: endpoints }
+        {endpoints: endpoints}
       end
     end
   end
