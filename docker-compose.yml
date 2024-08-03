@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  '3.3':
+    build:
+      context: .
+      dockerfile: Dockerfile-3.3
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./bin:/var/www/qstash-rb/bin/
+      - ./lib:/var/www/qstash-rb/lib/
+      - ./test:/var/www/qstash-rb/test/
+    container_name: qstah-rb-3.3
+    command: bash
+
+volumes:
+  bin:
+  lib:
+  test:

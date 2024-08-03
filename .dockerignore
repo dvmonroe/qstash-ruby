@@ -1,0 +1,9 @@
+./.bundle
+/vendor/
+Gemfile.lock
+
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
