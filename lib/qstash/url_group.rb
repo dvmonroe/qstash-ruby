@@ -9,12 +9,12 @@ require "qstash/url_group/delete"
 module QStash
   module URLGroup
     class << self
-      def add_endpoints(url_group_name, endpoints: [], headers: {})
-        AddEndpoints.call(url_group_name, endpoints: endpoints, headers: headers)
+      def add_endpoints(url_group_name:, endpoints: [], headers: {})
+        AddEndpoints.call(url_group_name: url_group_name, endpoints: endpoints, headers: headers)
       end
 
-      def delete_endpoints(url_group_name, endpoints: [], headers: {})
-        DeleteEndpoints.call(url_group_name, endpoints: endpoints, headers: headers)
+      def delete_endpoints(url_group_name:, endpoints: [], headers: {})
+        DeleteEndpoints.call(url_group_name: url_group_name, endpoints: endpoints, headers: headers)
       end
 
       def delete(url_group_name, headers: {})

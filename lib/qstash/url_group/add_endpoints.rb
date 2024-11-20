@@ -10,7 +10,7 @@ module QStash
 
       attr_reader :url_group_name, :endpoints, :headers
 
-      def initialize(url_group_name, endpoints: [], headers: {})
+      def initialize(url_group_name:, endpoints: [], headers: {})
         @url_group_name = url_group_name
         @endpoints = endpoints
         @headers = headers
