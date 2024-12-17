@@ -239,7 +239,7 @@ QStash::URLGroup.list
 To [add endpoints to a url group](https://upstash.com/docs/qstash/api/url-groups/add-endpoint):
 
 ```ruby
-QStash::URLGroup.add_endpoints(url_group_name: "my-url-group", endpoints: [{url: "https://example.com/api/message-receiver"}])
+QStash::URLGroup.add_endpoints("my-url-group", endpoints: [{url: "https://example.com/api/message-receiver"}])
 ```
 
 **Note that this will create the url group if it doesn't already exist.**
@@ -249,7 +249,7 @@ QStash::URLGroup.add_endpoints(url_group_name: "my-url-group", endpoints: [{url:
 To [delete endpoints from a url group](https://upstash.com/docs/qstash/api/url-groups/remove-endpoint):
 
 ```ruby
-QStash::URLGroup.delete_endpoints(url_group_name: "my-url-group", endpoints: [{url: "https://example.com/api/message-receiver"}])
+QStash::URLGroup.delete_endpoints("my-url-group", endpoints: [{url: "https://example.com/api/message-receiver"}])
 ```
 
 #### Delete

@@ -36,6 +36,7 @@ module QStash
     def make_request(request)
       request["Authorization"] = "Bearer #{QStash.config.token}"
       request["User-Agent"] = "qstash-ruby/#{QStash::VERSION}"
+      request["Content-Type"] = "application/json"
 
       Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
         http.request(request).then do |response|
